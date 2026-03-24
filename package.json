@@ -15,6 +15,7 @@
     "@mui/icons-material": "^7.3.9",
     "@mui/material": "^7.3.9",
     "@mui/x-date-pickers": "^8.27.2",
+    "@octokit/rest": "^22.0.1",
     "chart.js": "^4.5.1",
     "dayjs": "^1.11.20",
     "react": "^19.2.4",
