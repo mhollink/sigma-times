@@ -7,13 +7,24 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import {useAuthorize} from "../../hooks/useAuthorize.ts";
 import {useOcto} from "../../hooks/useOcto.ts";
+import {useEffect} from "react";
 
 const neonColor = "#7CFFCB";
 
 export const GuessModal = () => {
-    const user = useAuthorize().getUser();
+    const token = useAuthorize().getToken();
     const octo = useOcto();
     const [open, setOpen] = React.useState(false);
+    const [sha, setSha] = React.useState("");
+
+    useEffect(() => {
+        const fetchFileData = async () => {
+            const fileSha = await octo.getFileSha();
+            setSha(fileSha);
+        }
+
+        fetchFileData();
+    }, [token]);
 
     const handleClickOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -23,14 +34,15 @@ export const GuessModal = () => {
         const formData = new FormData(event.currentTarget);
         const formJson = Object.fromEntries((formData as any).entries());
 
-        octo.updateGuesses({updatedGuesses: "test!"});
+        console.log(formJson);
+        // octo.updateGuesses({updatedGuesses: "test!"}, sha);
 
         handleClose();
     };
 
     return (
         <React.Fragment>
-            {user && (
+            {token && (
                 <Button
                     variant="outlined"
                     sx={{

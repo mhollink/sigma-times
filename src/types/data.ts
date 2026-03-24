@@ -1,33 +1,17 @@
 export type WeeklyGuess = {
-    week: number;
     name: string;
-    eric: string;
-    niels: string;
-    marcel: string;
     actual: string;
+    guesses: Record<string, String>;
 };
 
-export type Points = {
-    eric: number,
-    niels: number,
-    marcel: number,
-}
+export type Points = Record<string, number>;
+export type ScoredWeeklyGuess = WeeklyGuess & { points?: Points };
 
-export type PlayerStats = {
+export type Stats = {
     total: number;
     min: number;
     avg: number;
     isBestTotal: boolean;
-    isBestMin: boolean;
-    isBestAvg: boolean;
 };
 
-export type AllTimeStats = {
-    eric: PlayerStats;
-    niels: PlayerStats;
-    marcel: PlayerStats;
-};
-
-export type ScoredWeeklyGuess = WeeklyGuess & { points?: Points };
-
-export type GroupedWeeklyGuess = Record<number, ScoredWeeklyGuess>;
+export type PlayerStats = Record<string, Stats>;

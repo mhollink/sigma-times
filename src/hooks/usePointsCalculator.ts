@@ -1,5 +1,5 @@
 import {useTimeCalculator} from "./useTimeCalculator.ts";
-import type {Points, ScoredWeeklyGuess, WeeklyGuess, AllTimeStats} from "../types/data.ts";
+import type {AllTimeStats, Points, ScoredWeeklyGuess, WeeklyGuess} from "../types/data.ts";
 
 export const usePointsCalculator = () => {
     const {calculateDifference} = useTimeCalculator();
@@ -9,11 +9,8 @@ export const usePointsCalculator = () => {
             return row;
         }
 
-        const points: Points = {
-            eric: calculateDifference(row.eric, row.actual),
-            marcel: calculateDifference(row.marcel, row.actual),
-            niels: calculateDifference(row.niels, row.actual)
-        }
+        const points = Object.fromEntries(Object.entries(row.guesses)
+            .map(([player, guess]) => [player, calculateDifference(guess, row.actual)]));
 
         return {
             ...row,
@@ -21,20 +18,6 @@ export const usePointsCalculator = () => {
         }
     }
 
-    function getAllTimeStats(allTimeData: ScoredWeeklyGuess[]): Points {
-        return allTimeData
-            .map(row => row.points)
-            .filter(x => !!x)
-            .reduce<Scores>(
-                (acc, curr) => {
-                    acc.eric += curr.eric;
-                    acc.marcel += curr.marcel;
-                    acc.niels += curr.niels;
-                    return acc;
-                },
-                {eric: 0, marcel: 0, niels: 0}
-            )
-    }
 
     function getPlayerStats(allTimeData: ScoredWeeklyGuess[]): AllTimeStats {
         const weeklyPoints = Object.values(allTimeData);
@@ -52,15 +35,13 @@ export const usePointsCalculator = () => {
 
                 return [
                     player,
-                    { total, min, avg },
+                    {total, min, avg},
                 ];
             })
         ) as Record<typeof players[number], { total: number; min: number; avg: number }>;
 
         // Determine best (lowest) values
         const bestTotal = Math.min(...players.map(p => baseStats[p].total));
-        const bestMin = Math.min(...players.map(p => baseStats[p].min));
-        const bestAvg = Math.min(...players.map(p => baseStats[p].avg));
 
         // Second pass: add flags
         const result = Object.fromEntries(
@@ -72,8 +53,6 @@ export const usePointsCalculator = () => {
                     {
                         ...stats,
                         isBestTotal: stats.total === bestTotal,
-                        isBestMin: stats.min === bestMin,
-                        isBestAvg: stats.avg === bestAvg,
                     },
                 ];
             })
@@ -85,6 +64,5 @@ export const usePointsCalculator = () => {
     return {
         addPointsToWeeklyGuess,
         getPlayerStats,
-        getAllTimeStats,
     }
 }

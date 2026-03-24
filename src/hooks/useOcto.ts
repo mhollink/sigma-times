@@ -6,26 +6,25 @@ export const useOcto = () => {
 
     const owner = "mhollink";
     const repo = "sigma-times";
-    const path = "public/guesses.json";
+    const path = "public/arrival-times.json";
 
     const octokit = new Octokit({auth: getToken()});
 
-    async function updateGuesses(newData: any) {
+    /**
+     * The sha is required for updating the file
+     * to make sure it's the correct version.
+     */
+    async function getFileSha() {
         const user = getUser()
 
         if (!user) {
             throw new Error("Not (correctly) logged in!");
         }
-
-        // 1. Get current file info (to get SHA)
         const {data: file} = await octokit.repos.getContent({owner, repo, path});
+        return file.sha;
+    }
 
-        const sha = (file as any).sha; // SHA is required for updates
-
-        // 2. Prepare content
-        const content = btoa(JSON.stringify(newData))
-
-        // 3. Update file
+    async function updateGuesses(newData: any, sha: string) {
         await octokit.repos.createOrUpdateFileContents({
             owner,
             repo,
@@ -35,12 +34,13 @@ export const useOcto = () => {
                 email: user.email
             },
             message: `${user.name} updated guesses.json`,
-            content,
+            content: btoa(JSON.stringify(newData)),
             sha,
         });
     }
 
     return {
+        getFileSha,
         updateGuesses,
     }
 }

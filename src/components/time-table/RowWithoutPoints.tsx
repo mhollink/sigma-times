@@ -6,9 +6,9 @@ export const TableRowWithoutPoints = ({row}: {row: WeeklyGuess}) => (
     <TableRow sx={hoverRow}>
         <TableCell/>
         <TableCell sx={cellLeft}>{row.name}</TableCell>
-        <TableCell sx={cell}>{row.eric}</TableCell>
-        <TableCell sx={cell}>{row.niels}</TableCell>
-        <TableCell sx={cell}>{row.marcel}</TableCell>
+        <TableCell sx={cell}>{row.guesses.eric}</TableCell>
+        <TableCell sx={cell}>{row.guesses.niels}</TableCell>
+        <TableCell sx={cell}>{row.guesses.marcel}</TableCell>
         <TableCell sx={cell}>{row.actual}</TableCell>
     </TableRow>
 );

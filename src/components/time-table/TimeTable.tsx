@@ -6,21 +6,12 @@ import {GlassCard} from "../GlassCard.tsx";
 import {RowGroup} from "./RowGroup.tsx";
 
 import {headerStyle} from "./_styles.ts";
-import {usePointsCalculator} from "../../hooks/usePointsCalculator.ts";
-import type {ScoredWeeklyGuess} from "../../types/data.ts";
-import {useWeeklyScores} from "../../hooks/useWeeklyScores.ts";
 
 export type TimeTableProps = {
-    data: WeeklyGuess[]
+    data: Record<number, WeeklyGuess[]>
 }
 
 export const TimeTable: FunctionComponent<TimeTableProps> = ({data}) => {
-    const {addPointsToWeeklyGuess} = usePointsCalculator();
-    const {groupWeeklyData} = useWeeklyScores()
-
-    const calculated = data.map(addPointsToWeeklyGuess)
-    const grouped = groupWeeklyData(calculated);
-
     return (
         <GlassCard title={"Arrival times & Guesses"}>
             <Table size="small">
@@ -36,7 +27,7 @@ export const TimeTable: FunctionComponent<TimeTableProps> = ({data}) => {
                 </TableHead>
                 <TableBody>
                     {Object
-                        .entries(grouped)
+                        .entries(data)
                         .sort(([weekA], [weekB]) => Number(weekB) - Number(weekA))
                         .slice(0, 3) // cap at 3 weeks
                         .map(([week, rows]) => (
