@@ -14,14 +14,17 @@ export const useOcto = () => {
      * The sha is required for updating the file
      * to make sure it's the correct version.
      */
-    async function getFileSha() {
+    async function getFile() {
         const user = getUser()
 
         if (!user) {
             throw new Error("Not (correctly) logged in!");
         }
         const {data: file} = await octokit.repos.getContent({owner, repo, path});
-        return file.sha;
+        return {
+            sha: file.sha,
+            content: JSON.parse(atob(file.content))
+        };
     }
 
     async function updateGuesses(newData: any, sha: string) {
@@ -40,7 +43,7 @@ export const useOcto = () => {
     }
 
     return {
-        getFileSha,
+        getFile,
         updateGuesses,
     }
 }

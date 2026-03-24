@@ -134,7 +134,7 @@ export const SignInModal = () => {
                         type="submit"
                         form="sign-in-form"
                         sx={{
-                            color: "#fff",
+                            color: "transparant",
                             fontWeight: 600,
                             background: `linear-gradient(90deg, ${neonColor}, #3EDFFF)`,
                             boxShadow: `0 0 10px ${neonColor}, 0 0 20px #3EDFFF`,
