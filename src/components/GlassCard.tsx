@@ -2,7 +2,7 @@ import {Box, Card, Typography} from "@mui/material";
 import type {FunctionComponent, PropsWithChildren} from "react";
 
 type GlassCardProps = PropsWithChildren<{
-    title: string;
+    title?: string;
 }>
 
 export const GlassCard: FunctionComponent<GlassCardProps> = ({title, children}) => (
@@ -18,9 +18,11 @@ export const GlassCard: FunctionComponent<GlassCardProps> = ({title, children}) 
             color: "white",
         }}
     >
-        <Typography variant="h5">
-            {title}
-        </Typography>
+        {!!title && (
+            <Typography variant="h5">
+                {title}
+            </Typography>
+        )}
 
         <Box>
             {children}

@@ -7,7 +7,7 @@ import {useWeeklyScores} from "./hooks/useWeeklyScores.ts";
 import {GlassCard} from "./components/GlassCard.tsx";
 import {WeeklyScoresChart} from "./components/weekly-scores/WeeklyScoresChart.tsx";
 import {AccumulatedScoresChart} from "./components/weekly-scores/AccumulatedScoresChart.tsx";
-import {useOcto} from "./hooks/useOcto.ts";
+import {AppBar} from "./components/app-bar/AppBar.tsx";
 
 export default function App() {
     const {addPointsToWeeklyGuess, getPlayerStats} = usePointsCalculator();
@@ -16,12 +16,11 @@ export default function App() {
     const weeklyScores = sumWeeklyScores(groupWeeklyData(allTimeStats));
     const playerScores = getPlayerStats(weeklyScores);
 
-    const octo = useOcto("");
-    octo.updateGuesses(allTimeStats);
-
     return (
         <Container maxWidth="lg" sx={{py: 4}}>
             <Stack spacing={2}>
+                <AppBar />
+
                 <Stack spacing={3} direction="row" sx={{
                     "& > *": {
                         width: "100%",
