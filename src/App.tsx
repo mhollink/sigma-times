@@ -13,8 +13,6 @@ import type {WeeklyGuess} from "./types/data.ts";
 
 export default function App() {
     const data = useDataFile();
-
-
     return (
         <Container maxWidth="lg" sx={{py: 4}}>
             {!!data && (

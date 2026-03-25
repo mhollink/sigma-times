@@ -31,7 +31,7 @@ export const usePointsCalculator = () => {
 
                 const total = values.reduce((a, b) => a + b, 0);
                 const min = Math.min(...values);
-                const avg = count ? total / count : 0;
+                const avg = count ? (total / count).toFixed(1) : 0;
 
                 return [
                     player,
