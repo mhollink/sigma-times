@@ -3,7 +3,7 @@ import {useAuthorize} from "./useAuthorize.ts";
 import {useOcto} from "./useOcto.ts";
 
 export type Data = {
-    arrivalTimes: Record<number, WeeklyGuess[]>;
+    arrivalTimes: Record<string, WeeklyGuess[]>;
 };
 
 export const useDataFile = () => {

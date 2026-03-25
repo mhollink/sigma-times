@@ -61,6 +61,10 @@ export const GuessModal = () => {
         handleClose();
     };
 
+    const hasAlreadyGuessed = () => {
+
+    }
+
     return (
         <React.Fragment>
             {token && (
