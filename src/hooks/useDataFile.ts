@@ -14,7 +14,7 @@ export const useDataFile = () => {
 
     useEffect(() => {
         async function loadDataFromPublicFolder() {
-            const response = await fetch("/arrival-times.json")
+            const response = await fetch("/sigma-times/arrival-times.json")
             const json = await response.json()
             setData(json);
         }
