@@ -7,15 +7,15 @@ import {barShadowPlugin} from "./barShadowPlugin.ts";
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 interface WeeklyScoresChartProps {
-    data: Record<number, Points>;
+    data: Record<string, Points>;
 }
 
 export const WeeklyScoresChart: FunctionComponent<WeeklyScoresChartProps> = ({data}) => {
-    const values = Object.entries(data)
-        .sort(([weekA], [weekB]) => new Date(weekA) - new Date(weekB))
+    const values: ({week: string} & Points)[] = Object.entries(data)
+        .sort(([a], [b]) => new Date(a).getTime() - new Date(b).getTime())
         .flatMap((([week, scores]) => ({week, ...scores})));
     const labels = Object.keys(data)
-        .sort((weekA, weekB) => new Date(weekA) - new Date(weekB))
+        .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
 
 
     const chartData = {
@@ -23,21 +23,21 @@ export const WeeklyScoresChart: FunctionComponent<WeeklyScoresChartProps> = ({da
         datasets: [
             {
                 label: "Eric",
-                data: values.map((d) => d.eric),
+                data: values.map((d: Points) => d.eric),
                 borderColor: "rgba(125, 255, 224, 0.9)",
                 backgroundColor: "rgba(125, 255, 224, 0.3)",
                 borderWidth: 2,
             },
             {
                 label: "Niels",
-                data: values.map((d) => d.niels),
+                data: values.map((d: Points) => d.niels),
                 backgroundColor: "rgba(147, 233, 73, 0.7)",
                 borderColor: "rgba(147, 233, 73, 1)",
                 borderWidth: 2,
             },
             {
                 label: "Marcel",
-                data: values.map((d) => d.marcel),
+                data: values.map((d: Points) => d.marcel),
                 backgroundColor: "rgba(200, 100, 255, 0.7)",
                 borderColor: "rgba(200, 100, 255, 1)",
                 borderWidth: 2,

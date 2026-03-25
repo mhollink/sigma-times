@@ -3,7 +3,7 @@ export const barShadowPlugin = {
     afterDatasetsDraw: (chart: any) => {
         const ctx = chart.ctx;
 
-        chart.data.datasets.forEach((dataset: any, datasetIndex: number) => {
+        chart.data.datasets.forEach((_: any, datasetIndex: number) => {
             const meta = chart.getDatasetMeta(datasetIndex);
             meta.data.forEach((bar: any) => {
                 ctx.save();

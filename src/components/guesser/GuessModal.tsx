@@ -24,7 +24,7 @@ export const GuessModal = () => {
     const [open, setOpen] = React.useState(false);
     const [sha, setSha] = React.useState("");
     const [content, setContent] = React.useState<Data>("");
-    const [invalidEntries, setInvalidEntries] = React.useState([]);
+    const [invalidEntries, setInvalidEntries] = React.useState<string[]>([]);
 
     const token = getToken();
     const user = getUser();
@@ -48,7 +48,7 @@ export const GuessModal = () => {
             .map(([field]) => field);
     }
 
-    const mergeGuessesIntoData = (todaysGuesses, currentGuesses) => {
+    const mergeGuessesIntoData = (todaysGuesses: any, currentGuesses: any) => {
         const guessingPlayer = user?.name.toLowerCase();
         return todaysGuesses.map((player) => {
             const key = player.name.toLowerCase();

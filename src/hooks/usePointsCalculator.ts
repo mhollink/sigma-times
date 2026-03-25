@@ -1,5 +1,5 @@
 import {useTimeCalculator} from "./useTimeCalculator.ts";
-import type {AllTimeStats, Points, ScoredWeeklyGuess, WeeklyGuess} from "../types/data.ts";
+import type { Points, ScoredWeeklyGuess, WeeklyGuess} from "../types/data.ts";
 
 export const usePointsCalculator = () => {
     const {calculateDifference} = useTimeCalculator();
@@ -19,14 +19,14 @@ export const usePointsCalculator = () => {
     }
 
 
-    function getPlayerStats(allTimeData: ScoredWeeklyGuess[]): AllTimeStats {
+    function getPlayerStats(allTimeData: Record<string, Points>) {
         const weeklyPoints = Object.values(allTimeData);
         const count = weeklyPoints.length;
         const players = ["eric", "niels", "marcel"] as const;
 
         // First pass: calculate stats
         const baseStats = Object.fromEntries(
-            players.map((player) => {
+            players.map((player: string) => {
                 const values = weeklyPoints.map(p => p[player]);
 
                 const total = values.reduce((a, b) => a + b, 0);
@@ -58,7 +58,7 @@ export const usePointsCalculator = () => {
             })
         );
 
-        return result as AllTimeStats;
+        return result;
     }
 
     return {

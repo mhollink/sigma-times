@@ -1,5 +1,5 @@
 import type {FunctionComponent} from "react";
-import type {WeeklyGuess} from "../types/data.ts";
+import type {WeeklyGuess} from "../../types/data.ts"
 
 import {Table, TableBody, TableCell, TableHead, TableRow,} from "@mui/material";
 import {GlassCard} from "../GlassCard.tsx";
@@ -28,7 +28,7 @@ export const TimeTable: FunctionComponent<TimeTableProps> = ({data}) => {
                 <TableBody>
                     {Object
                         .entries(data)
-                        .sort(([weekA], [weekB]) => new Date(weekB) - new Date(weekA))
+                        .sort(([weekA], [weekB]) => new Date(weekB).getTime() - new Date(weekA).getTime())
                         .slice(0, 4)
                         .map(([week, rows]) => (
                             <RowGroup key={week} week={week} rows={rows}/>

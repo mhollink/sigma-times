@@ -15,29 +15,29 @@ import type {FunctionComponent} from "react";
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 interface AccumulatedScoresChartProps {
-    data: Record<number, Points>;
+    data: Record<string, Points>;
 }
 
 export const AccumulatedScoresChart: FunctionComponent<AccumulatedScoresChartProps> = ({data}) => {
-    const values = Object.entries(data)
-        .sort(([weekA], [weekB]) => new Date(weekA) - new Date(weekB))
+    const values:  ({week: string} & Points)[] = Object.entries(data)
+        .sort(([weekA], [weekB]) => new Date(weekA).getTime() - new Date(weekB).getTime())
         .flatMap((([week, scores]) => ({week, ...scores})));
     const labels = [
         0,
         ...Object.keys(data)
-            .sort((weekA, weekB) => new Date(weekA) - new Date(weekB))
+            .sort((weekA, weekB) => new Date(weekA).getTime() - new Date(weekB).getTime())
     ]
 
-    const scoresWithFake = [
-        {week: 0, eric: 0, niels: 0, marcel: 0},
+    const scoresWithFake: ({week: string} & Points)[] = [
+        {week: "0", eric: 0, niels: 0, marcel: 0},
         ...values,
     ];
 
-    const accumulated = scoresWithFake.reduce((acc, curr, index) => {
+    const accumulated: ({week: string} & Points)[] = scoresWithFake.reduce((acc, curr, index) => {
         if (index === 0) return [curr];
         const prev = acc[index - 1];
         acc.push({
-            week: curr.week,
+            week: curr.week as string,
             eric: curr.eric + prev.eric,
             niels: curr.niels + prev.niels,
             marcel: curr.marcel + prev.marcel,
@@ -84,5 +84,5 @@ export const AccumulatedScoresChart: FunctionComponent<AccumulatedScoresChartPro
         },
     };
 
-    return <Line data={chartData} options={options}/>;
+    return <Line data={chartData} options={options as any}/>;
 }

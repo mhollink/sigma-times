@@ -6,9 +6,9 @@ export const TableRowWithPoints = ({row}: { row: ScoredWeeklyGuess }) => (
     <TableRow sx={hoverRow}>
         <TableCell/>
         <TableCell sx={cellLeft}>{row.name}</TableCell>
-        <TableCell sx={cell}>{row.guesses.eric} ({row.points.eric})</TableCell>
-        <TableCell sx={cell}>{row.guesses.niels} ({row.points.niels})</TableCell>
-        <TableCell sx={cell}>{row.guesses.marcel} ({row.points.marcel})</TableCell>
+        <TableCell sx={cell}>{row.guesses.eric} ({row.points!.eric})</TableCell>
+        <TableCell sx={cell}>{row.guesses.niels} ({row.points!.niels})</TableCell>
+        <TableCell sx={cell}>{row.guesses.marcel} ({row.points!.marcel})</TableCell>
         <TableCell sx={cell}>{row.actual}</TableCell>
     </TableRow>
 );

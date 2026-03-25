@@ -1,20 +1,11 @@
 import type {GroupedWeeklyGuess, Points, ScoredWeeklyGuess} from "../types/data.ts";
-import {usePointsCalculator} from "./usePointsCalculator.ts";
 
 export const useWeeklyScores = () => {
-    function groupWeeklyData(calculated: ScoredWeeklyGuess[]) {
-        return calculated.reduce<GroupedWeeklyGuess>((acc, row) => {
-            acc[row.week] = acc[row.week] || [];
-            acc[row.week].push(row);
-            return acc;
-        }, {});
-    }
-
     function getAllTimeStats(allTimeData: ScoredWeeklyGuess[]): Points {
         return allTimeData
             .map(row => row.points)
             .filter(x => !!x)
-            .reduce<Scores>(
+            .reduce(
                 (acc, curr) => {
                     acc.eric += curr.eric;
                     acc.marcel += curr.marcel;
@@ -34,8 +25,5 @@ export const useWeeklyScores = () => {
         )
     }
 
-    return {
-        groupWeeklyData,
-        sumWeeklyScores
-    }
+    return {sumWeeklyScores}
 }

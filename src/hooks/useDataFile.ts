@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {useAuthorize} from "./useAuthorize.ts";
 import {useOcto} from "./useOcto.ts";
+import type {WeeklyGuess} from "../types/data.ts";
 
 export type Data = {
     arrivalTimes: Record<string, WeeklyGuess[]>;

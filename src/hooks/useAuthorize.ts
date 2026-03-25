@@ -14,10 +14,6 @@ export const useAuthorize = () => {
         localStorage.setItem("github-pat", token);
     }
 
-    function signOut() {
-        localStorage.removeItem("github-pat");
-    }
-
     function getUser() {
         let token = getToken();
         if (!token) {

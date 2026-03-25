@@ -34,10 +34,10 @@ export const useOcto = () => {
             repo,
             path,
             committer: {
-                name: user.name,
-                email: user.email
+                name: user!.name,
+                email: user!.email
             },
-            message: `${user.name} updated guesses.json`,
+            message: `${user!.name} updated guesses.json`,
             content: btoa(JSON.stringify(newData, null, 2)),
             sha,
         });
