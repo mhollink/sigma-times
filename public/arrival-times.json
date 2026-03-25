@@ -97,7 +97,7 @@
     "2026-03-25": [
       {
         "name": "Tony",
-        "actual": "-",
+        "actual": "07:34",
         "guesses": {
           "marcel": "08:25",
           "eric": "08:59",
@@ -115,7 +115,7 @@
       },
       {
         "name": "David",
-        "actual": "-",
+        "actual": "09:14",
         "guesses": {
           "marcel": "08:45",
           "eric": "08:58",
@@ -124,7 +124,7 @@
       },
       {
         "name": "Bart",
-        "actual": "-",
+        "actual": "09:35",
         "guesses": {
           "marcel": "09:10",
           "eric": "09:15",
@@ -133,7 +133,7 @@
       },
       {
         "name": "Roy",
-        "actual": "-",
+        "actual": "08:46",
         "guesses": {
           "marcel": "09:00",
           "eric": "09:07",
