@@ -28,6 +28,7 @@ export const useOcto = () => {
     }
 
     async function updateGuesses(newData: any, sha: string) {
+        const user = getUser()
         await octokit.repos.createOrUpdateFileContents({
             owner,
             repo,
@@ -37,7 +38,7 @@ export const useOcto = () => {
                 email: user.email
             },
             message: `${user.name} updated guesses.json`,
-            content: btoa(JSON.stringify(newData)),
+            content: btoa(JSON.stringify(newData, null, 2)),
             sha,
         });
     }

@@ -11,8 +11,12 @@ interface WeeklyScoresChartProps {
 }
 
 export const WeeklyScoresChart: FunctionComponent<WeeklyScoresChartProps> = ({data}) => {
-    const values = Object.entries(data).flatMap((([week, scores]) => ({week, ...scores})));
+    const values = Object.entries(data)
+        .sort(([weekA], [weekB]) => new Date(weekA) - new Date(weekB))
+        .flatMap((([week, scores]) => ({week, ...scores})));
     const labels = Object.keys(data)
+        .sort((weekA, weekB) => new Date(weekA) - new Date(weekB))
+
 
     const chartData = {
         labels,
@@ -45,15 +49,10 @@ export const WeeklyScoresChart: FunctionComponent<WeeklyScoresChartProps> = ({da
         responsive: true,
         plugins: {
             legend: {
-                position: "top" as const,
+                position: "bottom" as const,
                 labels: {
                     color: "white",
                 },
-            },
-            title: {
-                display: true,
-                text: "Weekly Guess Scores",
-                color: "white",
             },
             tooltip: {
                 titleColor: "white",

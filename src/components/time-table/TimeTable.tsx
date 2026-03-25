@@ -17,7 +17,7 @@ export const TimeTable: FunctionComponent<TimeTableProps> = ({data}) => {
             <Table size="small">
                 <TableHead>
                     <TableRow>
-                        <TableCell sx={{...headerStyle, textAlign: "left"}}>Week</TableCell>
+                        <TableCell sx={{...headerStyle, textAlign: "left"}}>Date</TableCell>
                         <TableCell sx={{...headerStyle, textAlign: "left"}}>Team member</TableCell>
                         <TableCell sx={headerStyle}>Eric</TableCell>
                         <TableCell sx={headerStyle}>Niels</TableCell>
@@ -28,8 +28,8 @@ export const TimeTable: FunctionComponent<TimeTableProps> = ({data}) => {
                 <TableBody>
                     {Object
                         .entries(data)
-                        .sort(([weekA], [weekB]) => Number(weekB) - Number(weekA))
-                        .slice(0, 3) // cap at 3 weeks
+                        .sort(([weekA], [weekB]) => new Date(weekB) - new Date(weekA))
+                        .slice(0, 4)
                         .map(([week, rows]) => (
                             <RowGroup key={week} week={week} rows={rows}/>
                         ))}

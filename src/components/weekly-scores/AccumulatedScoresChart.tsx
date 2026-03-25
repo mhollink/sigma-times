@@ -1,13 +1,13 @@
-import { Line } from "react-chartjs-2";
+import {Line} from "react-chartjs-2";
 import {
-    Chart as ChartJS,
     CategoryScale,
+    Chart as ChartJS,
+    Legend,
     LinearScale,
-    PointElement,
     LineElement,
+    PointElement,
     Title,
     Tooltip,
-    Legend,
 } from "chart.js";
 import type {Points} from "../../types/data.ts";
 import type {FunctionComponent} from "react";
@@ -19,11 +19,17 @@ interface AccumulatedScoresChartProps {
 }
 
 export const AccumulatedScoresChart: FunctionComponent<AccumulatedScoresChartProps> = ({data}) => {
-    const values = Object.entries(data).flatMap((([week, scores]) => ({week, ...scores})));
-    const labels = [0, ...Object.keys(data)]
+    const values = Object.entries(data)
+        .sort(([weekA], [weekB]) => new Date(weekA) - new Date(weekB))
+        .flatMap((([week, scores]) => ({week, ...scores})));
+    const labels = [
+        0,
+        ...Object.keys(data)
+            .sort((weekA, weekB) => new Date(weekA) - new Date(weekB))
+    ]
 
     const scoresWithFake = [
-        { week: 0, eric: 0, niels: 0, marcel: 0 },
+        {week: 0, eric: 0, niels: 0, marcel: 0},
         ...values,
     ];
 
@@ -69,15 +75,14 @@ export const AccumulatedScoresChart: FunctionComponent<AccumulatedScoresChartPro
     const options = {
         responsive: true,
         plugins: {
-            legend: { labels: { color: "white" } },
-            title: { display: true, text: "Accumulated Points Over Time", color: "white" },
-            tooltip: { titleColor: "white", bodyColor: "white" },
+            legend: {labels: {color: "white"}, position: "bottom"},
+            tooltip: {titleColor: "white", bodyColor: "white"},
         },
         scales: {
-            x: { ticks: { color: "white" }, grid: { color: "rgba(255,255,255,0.1)" } },
-            y: { ticks: { color: "white" }, grid: { color: "rgba(255,255,255,0.1)" } },
+            x: {ticks: {color: "white"}, grid: {color: "rgba(255,255,255,0.1)"}},
+            y: {ticks: {color: "white"}, grid: {color: "rgba(255,255,255,0.1)"}},
         },
     };
 
-    return <Line data={chartData} options={options} />;
+    return <Line data={chartData} options={options}/>;
 }

@@ -2,6 +2,7 @@ import {Fragment, FunctionComponent} from "react";
 import {TableCell, TableRow} from "@mui/material";
 import {TableRowWithoutPoints, TableRowWithPoints} from "./"
 import {weekHeaderStyle, winnerColumnStyle} from "./_styles.ts";
+import {formatDate} from "../../utils/string.ts";
 
 type Scores = {
     eric: number;
@@ -44,7 +45,7 @@ export const RowGroup: FunctionComponent<RowGroupProps> = ({rows, week}) => {
                     colSpan={2}
                     sx={weekHeaderStyle}
                 >
-                    {week}
+                    {formatDate(week)}
                 </TableCell>
                 <TableCell sx={getCellStyle(weeklyScores.eric)}>
                     {weeklyScores.eric}
