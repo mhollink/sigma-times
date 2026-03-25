@@ -25,6 +25,7 @@ export const GuessModal = () => {
     const [sha, setSha] = React.useState("");
     const [content, setContent] = React.useState<Data>("");
     const [invalidEntries, setInvalidEntries] = React.useState<string[]>([]);
+    const [loading, setLoading] = React.useState(false);
 
     const token = getToken();
     const user = getUser();
@@ -76,7 +77,7 @@ export const GuessModal = () => {
         ]
     }
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const formJson = Object.fromEntries((formData as any).entries());
@@ -87,6 +88,7 @@ export const GuessModal = () => {
             return;
         }
 
+        setLoading(true);
         const today = new Date().toISOString().split('T')[0];
         const times = content.arrivalTimes;
         const todaysGuesses = times[today] ?? createNewDay();
@@ -99,9 +101,10 @@ export const GuessModal = () => {
             }
         };
 
-        updateGuesses(updatedContent, sha);
+        await updateGuesses(updatedContent, sha);
 
         handleClose();
+        setLoading(false);
         window.location.reload()
     };
 
@@ -234,7 +237,7 @@ export const GuessModal = () => {
                         Cancel
                     </Button>
 
-                    {showInput && (
+                    {showInput && !loading && (
                         <Button
                             type="submit"
                             form="sign-in-form"
