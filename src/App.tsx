@@ -40,9 +40,9 @@ function AppContent({arrivalTimes}: AppContentProps) {
         <Stack spacing={2}>
             <AppBar/>
 
-            <Stack spacing={3} direction="row" sx={{
+            <Stack spacing={3}  direction={{ xs: 'column', md: 'row' }} sx={{
                 "& > *": {
-                    width: "100%",
+                    width: { xs: 'auto', md: '100%' },
                 },
             }}>
                 {Object.entries(playerScores).map(([player, score]) => (
@@ -50,9 +50,9 @@ function AppContent({arrivalTimes}: AppContentProps) {
                 ))}
             </Stack>
 
-            <Stack spacing={3} direction="row" sx={{
+            <Stack spacing={3}  direction={{ xs: 'column', md: 'row' }} sx={{
                 "& > *": {
-                    width: "100%",
+                    width: { xs: 'auto', md: '100%' },
                 },
             }}>
 
