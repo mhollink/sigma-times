@@ -194,7 +194,8 @@
         "actual": "-",
         "guesses": {
           "marcel": "08:45",
-          "niels": "08:35"
+          "niels": "08:35",
+          "eric": "08:36"
         }
       },
       {
@@ -202,7 +203,8 @@
         "actual": "-",
         "guesses": {
           "marcel": "09:45",
-          "niels": "09:45"
+          "niels": "09:45",
+          "eric": "09:44"
         }
       },
       {
@@ -210,7 +212,8 @@
         "actual": "-",
         "guesses": {
           "marcel": "08:39",
-          "niels": "08:40"
+          "niels": "08:40",
+          "eric": "08:44"
         }
       },
       {
@@ -218,7 +221,8 @@
         "actual": "-",
         "guesses": {
           "marcel": "09:10",
-          "niels": "09:15"
+          "niels": "09:15",
+          "eric": "09:15"
         }
       },
       {
@@ -226,7 +230,8 @@
         "actual": "-",
         "guesses": {
           "marcel": "09:01",
-          "niels": "09:05"
+          "niels": "09:05",
+          "eric": "09:02"
         }
       }
     ]
