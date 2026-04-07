@@ -56,7 +56,7 @@ export const RowGroup: FunctionComponent<RowGroupProps> = ({ rows, week }) => {
 				<TableCell sx={getCellStyle(weeklyScores.marcel)}>
 					{weeklyScores.marcel}
 				</TableCell>
-				<TableCell sx={weekHeaderStyle} />
+				<TableCell colSpan={2} sx={weekHeaderStyle} />
 			</TableRow>
 
 			{rows

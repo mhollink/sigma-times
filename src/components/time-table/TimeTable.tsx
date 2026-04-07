@@ -37,6 +37,7 @@ export const TimeTable: FunctionComponent<TimeTableProps> = ({ data }) => {
 							<TableCell sx={headerStyle}>Eric</TableCell>
 							<TableCell sx={headerStyle}>Niels</TableCell>
 							<TableCell sx={headerStyle}>Marcel</TableCell>
+							<TableCell sx={headerStyle}>Avg. Guess</TableCell>
 							<TableCell sx={headerStyle}>Actual</TableCell>
 						</TableRow>
 					</TableHead>
@@ -46,7 +47,7 @@ export const TimeTable: FunctionComponent<TimeTableProps> = ({ data }) => {
 								([weekA], [weekB]) =>
 									new Date(weekB).getTime() - new Date(weekA).getTime(),
 							)
-							.slice(0, 3)
+							.slice(0, 2)
 							.map(([week, rows]) => (
 								<RowGroup key={week} week={week} rows={rows} />
 							))}
