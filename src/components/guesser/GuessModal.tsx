@@ -15,7 +15,7 @@ import type {Data} from "../../hooks/useDataFile.ts";
 
 const neonColor = "#7CFFCB";
 const neonError = "#FF6B6B";
-const TIME_PATTERN = /^([01]\d|2[0-3]):[0-5]\d$/;
+const TIME_PATTERN = /^([01]?\d|2[0-3]):[0-5]\d$/;
 
 export const GuessModal = () => {
     const {getToken, getUser} = useAuthorize();
