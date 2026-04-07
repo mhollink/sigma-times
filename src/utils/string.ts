@@ -1,19 +1,22 @@
 export function capitalizeFirstLetter(name: string) {
-    if (!name) return "";
-    return name.charAt(0).toUpperCase() + name.slice(1);
+	if (!name) return "";
+	return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
 export function formatDate(input: string): string {
-    const date = new Date(input);
+	const date = new Date(input);
 
-    const month = date.toLocaleString('en-US', { month: 'long' });
-    const day = date.getDate();
+	const month = date.toLocaleString("en-US", { month: "long" });
+	const day = date.getDate();
 
-    const suffix =
-        day % 10 === 1 && day !== 11 ? 'st' :
-            day % 10 === 2 && day !== 12 ? 'nd' :
-                day % 10 === 3 && day !== 13 ? 'rd' :
-                    'th';
+	const suffix =
+		day % 10 === 1 && day !== 11
+			? "st"
+			: day % 10 === 2 && day !== 12
+				? "nd"
+				: day % 10 === 3 && day !== 13
+					? "rd"
+					: "th";
 
-    return `${month} ${day}${suffix}`;
+	return `${month} ${day}${suffix}`;
 }

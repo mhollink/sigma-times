@@ -1,239 +1,239 @@
 {
-  "arrivalTimes": {
-    "2026-03-24": [
-      {
-        "name": "Tony",
-        "actual": "09:01",
-        "guesses": {
-          "eric": "08:41",
-          "niels": "08:21",
-          "marcel": "08:40"
-        }
-      },
-      {
-        "name": "Rik",
-        "actual": "09:52",
-        "guesses": {
-          "eric": "09:04",
-          "niels": "08:48",
-          "marcel": "08:50"
-        }
-      },
-      {
-        "name": "David",
-        "actual": "08:56",
-        "guesses": {
-          "eric": "08:55",
-          "niels": "08:51",
-          "marcel": "08:30"
-        }
-      },
-      {
-        "name": "Bart",
-        "actual": "09:15",
-        "guesses": {
-          "eric": "09:21",
-          "niels": "09:21",
-          "marcel": "09:15"
-        }
-      },
-      {
-        "name": "Roy",
-        "actual": "09:14",
-        "guesses": {
-          "eric": "09:01",
-          "niels": "09:15",
-          "marcel": "09:00"
-        }
-      }
-    ],
-    "2026-03-17": [
-      {
-        "name": "Tony",
-        "actual": "09:22",
-        "guesses": {
-          "eric": "08:55",
-          "niels": "08:50",
-          "marcel": "08:50"
-        }
-      },
-      {
-        "name": "Rik",
-        "actual": "09:43",
-        "guesses": {
-          "eric": "09:09",
-          "niels": "09:35",
-          "marcel": "09:45"
-        }
-      },
-      {
-        "name": "David",
-        "actual": "07:32",
-        "guesses": {
-          "eric": "08:57",
-          "niels": "08:45",
-          "marcel": "08:47"
-        }
-      },
-      {
-        "name": "Bart",
-        "actual": "09:06",
-        "guesses": {
-          "eric": "09:20",
-          "niels": "09:19",
-          "marcel": "09:30"
-        }
-      },
-      {
-        "name": "Roy",
-        "actual": "09:12",
-        "guesses": {
-          "eric": "09:12",
-          "niels": "09:15",
-          "marcel": "09:20"
-        }
-      }
-    ],
-    "2026-03-25": [
-      {
-        "name": "Tony",
-        "actual": "07:34",
-        "guesses": {
-          "marcel": "08:25",
-          "eric": "08:59",
-          "niels": "08:55"
-        }
-      },
-      {
-        "name": "Rik",
-        "actual": "-",
-        "guesses": {
-          "marcel": "00:00",
-          "eric": "00:00",
-          "niels": "00:00"
-        }
-      },
-      {
-        "name": "David",
-        "actual": "09:14",
-        "guesses": {
-          "marcel": "08:45",
-          "eric": "08:58",
-          "niels": "08:50"
-        }
-      },
-      {
-        "name": "Bart",
-        "actual": "09:35",
-        "guesses": {
-          "marcel": "09:10",
-          "eric": "09:15",
-          "niels": "09:15"
-        }
-      },
-      {
-        "name": "Roy",
-        "actual": "08:46",
-        "guesses": {
-          "marcel": "09:00",
-          "eric": "09:07",
-          "niels": "09:10"
-        }
-      }
-    ],
-    "2026-03-31": [
-      {
-        "name": "Tony",
-        "actual": "08:26",
-        "guesses": {
-          "marcel": "08:30",
-          "eric": "09:02",
-          "niels": "08:55"
-        }
-      },
-      {
-        "name": "Rik",
-        "actual": "-",
-        "guesses": {
-          "marcel": "00:00",
-          "eric": "00:00",
-          "niels": "00:00"
-        }
-      },
-      {
-        "name": "David",
-        "actual": "08:46",
-        "guesses": {
-          "marcel": "08:00",
-          "eric": "08:55",
-          "niels": "07:50"
-        }
-      },
-      {
-        "name": "Bart",
-        "actual": "09:15",
-        "guesses": {
-          "marcel": "09:15",
-          "eric": "09:14",
-          "niels": "09:15"
-        }
-      },
-      {
-        "name": "Roy",
-        "actual": "09:01",
-        "guesses": {
-          "marcel": "09:00",
-          "eric": "09:05",
-          "niels": "09:10"
-        }
-      }
-    ],
-    "2026-04-07": [
-      {
-        "name": "Tony",
-        "actual": "-",
-        "guesses": {
-          "marcel": "08:45",
-          "niels": "08:35",
-          "eric": "08:36"
-        }
-      },
-      {
-        "name": "Rik",
-        "actual": "-",
-        "guesses": {
-          "marcel": "09:45",
-          "niels": "09:45",
-          "eric": "09:44"
-        }
-      },
-      {
-        "name": "David",
-        "actual": "-",
-        "guesses": {
-          "marcel": "08:39",
-          "niels": "08:40",
-          "eric": "08:44"
-        }
-      },
-      {
-        "name": "Bart",
-        "actual": "-",
-        "guesses": {
-          "marcel": "09:10",
-          "niels": "09:15",
-          "eric": "09:15"
-        }
-      },
-      {
-        "name": "Roy",
-        "actual": "-",
-        "guesses": {
-          "marcel": "09:01",
-          "niels": "09:05",
-          "eric": "09:02"
-        }
-      }
-    ]
-  }
+	"arrivalTimes": {
+		"2026-03-24": [
+			{
+				"name": "Tony",
+				"actual": "09:01",
+				"guesses": {
+					"eric": "08:41",
+					"niels": "08:21",
+					"marcel": "08:40"
+				}
+			},
+			{
+				"name": "Rik",
+				"actual": "09:52",
+				"guesses": {
+					"eric": "09:04",
+					"niels": "08:48",
+					"marcel": "08:50"
+				}
+			},
+			{
+				"name": "David",
+				"actual": "08:56",
+				"guesses": {
+					"eric": "08:55",
+					"niels": "08:51",
+					"marcel": "08:30"
+				}
+			},
+			{
+				"name": "Bart",
+				"actual": "09:15",
+				"guesses": {
+					"eric": "09:21",
+					"niels": "09:21",
+					"marcel": "09:15"
+				}
+			},
+			{
+				"name": "Roy",
+				"actual": "09:14",
+				"guesses": {
+					"eric": "09:01",
+					"niels": "09:15",
+					"marcel": "09:00"
+				}
+			}
+		],
+		"2026-03-17": [
+			{
+				"name": "Tony",
+				"actual": "09:22",
+				"guesses": {
+					"eric": "08:55",
+					"niels": "08:50",
+					"marcel": "08:50"
+				}
+			},
+			{
+				"name": "Rik",
+				"actual": "09:43",
+				"guesses": {
+					"eric": "09:09",
+					"niels": "09:35",
+					"marcel": "09:45"
+				}
+			},
+			{
+				"name": "David",
+				"actual": "07:32",
+				"guesses": {
+					"eric": "08:57",
+					"niels": "08:45",
+					"marcel": "08:47"
+				}
+			},
+			{
+				"name": "Bart",
+				"actual": "09:06",
+				"guesses": {
+					"eric": "09:20",
+					"niels": "09:19",
+					"marcel": "09:30"
+				}
+			},
+			{
+				"name": "Roy",
+				"actual": "09:12",
+				"guesses": {
+					"eric": "09:12",
+					"niels": "09:15",
+					"marcel": "09:20"
+				}
+			}
+		],
+		"2026-03-25": [
+			{
+				"name": "Tony",
+				"actual": "07:34",
+				"guesses": {
+					"marcel": "08:25",
+					"eric": "08:59",
+					"niels": "08:55"
+				}
+			},
+			{
+				"name": "Rik",
+				"actual": "WFH.",
+				"guesses": {
+					"marcel": "WFH.",
+					"eric": "WFH.",
+					"niels": "WFH."
+				}
+			},
+			{
+				"name": "David",
+				"actual": "09:14",
+				"guesses": {
+					"marcel": "08:45",
+					"eric": "08:58",
+					"niels": "08:50"
+				}
+			},
+			{
+				"name": "Bart",
+				"actual": "09:35",
+				"guesses": {
+					"marcel": "09:10",
+					"eric": "09:15",
+					"niels": "09:15"
+				}
+			},
+			{
+				"name": "Roy",
+				"actual": "08:46",
+				"guesses": {
+					"marcel": "09:00",
+					"eric": "09:07",
+					"niels": "09:10"
+				}
+			}
+		],
+		"2026-03-31": [
+			{
+				"name": "Tony",
+				"actual": "08:26",
+				"guesses": {
+					"marcel": "08:30",
+					"eric": "09:02",
+					"niels": "08:55"
+				}
+			},
+			{
+				"name": "Rik",
+				"actual": "WFH.",
+				"guesses": {
+					"marcel": "WFH.",
+					"eric": "WFH.",
+					"niels": "WFH."
+				}
+			},
+			{
+				"name": "David",
+				"actual": "08:46",
+				"guesses": {
+					"marcel": "08:00",
+					"eric": "08:55",
+					"niels": "07:50"
+				}
+			},
+			{
+				"name": "Bart",
+				"actual": "09:15",
+				"guesses": {
+					"marcel": "09:15",
+					"eric": "09:14",
+					"niels": "09:15"
+				}
+			},
+			{
+				"name": "Roy",
+				"actual": "09:01",
+				"guesses": {
+					"marcel": "09:00",
+					"eric": "09:05",
+					"niels": "09:10"
+				}
+			}
+		],
+		"2026-04-07": [
+			{
+				"name": "Tony",
+				"actual": "08:50",
+				"guesses": {
+					"marcel": "08:45",
+					"niels": "08:35",
+					"eric": "08:36"
+				}
+			},
+			{
+				"name": "Rik",
+				"actual": "09:45",
+				"guesses": {
+					"marcel": "09:45",
+					"niels": "09:45",
+					"eric": "09:44"
+				}
+			},
+			{
+				"name": "David",
+				"actual": "09:00",
+				"guesses": {
+					"marcel": "08:39",
+					"niels": "08:40",
+					"eric": "08:44"
+				}
+			},
+			{
+				"name": "Bart",
+				"actual": "9:00",
+				"guesses": {
+					"marcel": "09:10",
+					"niels": "09:15",
+					"eric": "09:15"
+				}
+			},
+			{
+				"name": "Roy",
+				"actual": "9:17",
+				"guesses": {
+					"marcel": "09:01",
+					"niels": "09:05",
+					"eric": "09:02"
+				}
+			}
+		]
+	}
 }

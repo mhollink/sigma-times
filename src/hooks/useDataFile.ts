@@ -1,36 +1,48 @@
-import {useEffect, useState} from "react";
-import {useAuthorize} from "./useAuthorize.ts";
-import {useOcto} from "./useOcto.ts";
-import type {WeeklyGuess} from "../types/data.ts";
+import { useCallback, useEffect, useState } from "react";
+import type { WeeklyGuess } from "../types/data.ts";
+import { useAuthorize } from "./useAuthorize.ts";
+import { useOcto } from "./useOcto.ts";
 
 export type Data = {
-    arrivalTimes: Record<string, WeeklyGuess[]>;
+	arrivalTimes: Record<string, WeeklyGuess[]>;
 };
 
 export const useDataFile = () => {
-    const {getToken} = useAuthorize();
-    const {getFile} = useOcto();
-    const [data, setData] = useState<Data>()
+	const { getToken } = useAuthorize();
+	const { getFile } = useOcto();
+	const [data, setData] = useState<Data>();
 
-    useEffect(() => {
-        async function loadDataFromPublicFolder() {
-            const response = await fetch("/sigma-times/arrival-times.json")
-            const json = await response.json()
-            setData(json);
-        }
+	const loadDataFromPublicFolder = useCallback(async () => {
+		const response = await fetch("/sigma-times/arrival-times.json");
+		const json = await response.json();
+		setData(json);
+	});
 
-        async function loadDataFromGithub() {
-            const file = await getFile();
-            setData(file.content)
-        }
+	const loadDataFromGithub = useCallback(async (token) => {
+		const file = await getFile(token);
+		setData(file.content);
+	});
 
-        const token = getToken();
-        if (!!token) {
-            loadDataFromGithub();
-        } else {
-            loadDataFromPublicFolder();
-        }
-    }, [])
+	useEffect(() => {
+		if (import.meta.env.MODE === "development") {
+			// running locally,
+			// use the local file;
+			loadDataFromPublicFolder();
+			return;
+		}
 
-    return data;
-}
+		const token = getToken();
+		if (!token) {
+			// running without a token... unable to remote fetch,
+			// use the local file.
+			loadDataFromPublicFolder();
+			return;
+		}
+
+		// has configured a token,
+		// try to use the remote file.
+		loadDataFromGithub(token);
+	}, []);
+
+	return data;
+};
