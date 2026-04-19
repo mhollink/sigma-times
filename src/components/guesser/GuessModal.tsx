@@ -13,10 +13,11 @@ import FormHelperText from "@mui/material/FormHelperText";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import * as React from "react";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthorize } from "../../hooks/useAuthorize.ts";
 import type { Data } from "../../hooks/useDataFile.ts";
 import { useOcto } from "../../hooks/useOcto.ts";
+import type { WeeklyGuess } from "../../types/data.ts";
 
 const neonColor = "#7CFFCB";
 const neonError = "#FF6B6B";
@@ -28,23 +29,24 @@ export const GuessModal = () => {
 
 	const [open, setOpen] = React.useState(false);
 	const [sha, setSha] = React.useState("");
-	const [content, setContent] = React.useState<Data>("");
+	const [content, setContent] = React.useState<Data | undefined>(undefined);
 	const [invalidEntries, setInvalidEntries] = React.useState<string[]>([]);
 	const [loading, setLoading] = React.useState(false);
 
 	const token = getToken();
 	const user = getUser();
 
-	const fetchFileData = useCallback(async (token: string) => {
-		const { sha, content } = await getFile(token);
-		setSha(sha);
-		setContent(content);
-	});
-
 	useEffect(() => {
 		if (!token) return;
+
+		const fetchFileData = async (token: string) => {
+			const { sha, content } = await getFile(token);
+			setSha(sha);
+			setContent(content);
+		};
+
 		fetchFileData(token);
-	}, [token, fetchFileData]);
+	}, [token, getFile]);
 
 	const handleClickOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -56,9 +58,13 @@ export const GuessModal = () => {
 			.map(({ key }) => key);
 	};
 
-	const mergeGuessesIntoData = (todaysGuesses: any, currentGuesses: any) => {
-		const guessingPlayer = user?.name.toLowerCase();
-		return todaysGuesses.map((player) => {
+	const mergeGuessesIntoData = (
+		todaysGuesses: WeeklyGuess[],
+		currentGuesses: Record<string, string>,
+	) => {
+		const guessingPlayer = user!.name.toLowerCase();
+
+		return todaysGuesses.map((player: WeeklyGuess) => {
 			const key = player.name.toLowerCase();
 			const guess = currentGuesses[key];
 
@@ -102,11 +108,12 @@ export const GuessModal = () => {
 			return null;
 		}
 
-		return Object.fromEntries(times);
+		const inputEntries = times.map(({ key, value }) => [key, value]);
+		return Object.fromEntries(inputEntries);
 	};
 
 	function getTodaysGuesses(today: string) {
-		const times = content.arrivalTimes;
+		const times = content!.arrivalTimes;
 		return times[today] ?? createNewDay();
 	}
 
@@ -127,7 +134,7 @@ export const GuessModal = () => {
 
 		const updatedContent = {
 			arrivalTimes: {
-				...content.arrivalTimes,
+				...content!.arrivalTimes,
 				[today]: updatesGuesses,
 			},
 		};
@@ -151,7 +158,7 @@ export const GuessModal = () => {
 		const todaysGuesses = times[today];
 		const guessers = Object.keys(todaysGuesses[0].guesses);
 
-		return !guessers.includes(user?.name.toLowerCase());
+		return !guessers.includes(user!.name.toLowerCase());
 	};
 
 	const showInput = canPlaceAGuess();
@@ -314,7 +321,15 @@ export const GuessModal = () => {
 	);
 };
 
-function TimeFormField({ name, label, invalid }) {
+function TimeFormField({
+	name,
+	label,
+	invalid,
+}: {
+	name: string;
+	label: string;
+	invalid: boolean;
+}) {
 	const [time, setTime] = useState("");
 	const [wfh, setWfh] = useState(false);
 	return (
@@ -353,6 +368,7 @@ function TimeFormField({ name, label, invalid }) {
 					}}
 				/>
 				<FormControlLabel
+					label=""
 					control={
 						<Checkbox
 							id={`${name}-wfh`}

@@ -12,16 +12,21 @@ export const useDataFile = () => {
 	const { getFile } = useOcto();
 	const [data, setData] = useState<Data>();
 
+	const token = getToken();
+
 	const loadDataFromPublicFolder = useCallback(async () => {
 		const response = await fetch("/sigma-times/arrival-times.json");
 		const json = await response.json();
 		setData(json);
-	});
+	}, []);
 
-	const loadDataFromGithub = useCallback(async (token) => {
-		const file = await getFile(token);
-		setData(file.content);
-	});
+	const loadDataFromGithub = useCallback(
+		async (token: string) => {
+			const file = await getFile(token);
+			setData(file.content);
+		},
+		[getFile],
+	);
 
 	useEffect(() => {
 		if (import.meta.env.MODE === "development") {
@@ -31,7 +36,6 @@ export const useDataFile = () => {
 			return;
 		}
 
-		const token = getToken();
 		if (!token) {
 			// running without a token... unable to remote fetch,
 			// use the local file.
@@ -42,7 +46,7 @@ export const useDataFile = () => {
 		// has configured a token,
 		// try to use the remote file.
 		loadDataFromGithub(token);
-	}, []);
+	}, [token]);
 
 	return data;
 };

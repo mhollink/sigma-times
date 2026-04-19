@@ -1,4 +1,5 @@
 import { Octokit } from "@octokit/rest";
+import { useCallback } from "react";
 import { useAuthorize } from "./useAuthorize.ts";
 
 export const useOcto = () => {
@@ -10,24 +11,22 @@ export const useOcto = () => {
 
 	const octokit = new Octokit({ auth: getToken() });
 
-	/**
-	 * The sha is required for updating the file
-	 * to make sure it's the correct version.
-	 */
-	async function getFile(token: string) {
+	const getFile = useCallback(async (token: string) => {
 		if (!token) throw new Error("Not (correctly) logged in!");
+
 		const { data: file } = await octokit.repos.getContent({
 			owner,
 			repo,
 			path,
 		});
+
 		return {
 			sha: file.sha,
 			content: JSON.parse(atob(file.content)),
 		};
-	}
+	}, []);
 
-	async function updateGuesses(newData: any, sha: string) {
+	const updateGuesses = useCallback(async (newData: any, sha: string) => {
 		const user = getUser();
 		if (!user) throw new Error("Not (correctly) logged in!");
 		await octokit.repos.createOrUpdateFileContents({
@@ -42,7 +41,7 @@ export const useOcto = () => {
 			content: btoa(JSON.stringify(newData, null, 2)),
 			sha,
 		});
-	}
+	}, []);
 
 	return {
 		getFile,
