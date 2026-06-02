@@ -281,6 +281,43 @@
           "eric": "9:00"
         }
       }
+    ],
+    "2026-06-02": [
+      {
+        "name": "Tony",
+        "actual": "-",
+        "guesses": {
+          "niels": "9:10"
+        }
+      },
+      {
+        "name": "Rik",
+        "actual": "-",
+        "guesses": {
+          "niels": "9:43"
+        }
+      },
+      {
+        "name": "David",
+        "actual": "-",
+        "guesses": {
+          "niels": "9:55"
+        }
+      },
+      {
+        "name": "Bart",
+        "actual": "-",
+        "guesses": {
+          "niels": "9:10"
+        }
+      },
+      {
+        "name": "Roy",
+        "actual": "-",
+        "guesses": {
+          "niels": "9:00"
+        }
+      }
     ]
   }
 }
