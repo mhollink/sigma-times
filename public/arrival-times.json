@@ -287,35 +287,40 @@
         "name": "Tony",
         "actual": "-",
         "guesses": {
-          "niels": "9:10"
+          "niels": "9:10",
+          "marcel": "9:10"
         }
       },
       {
         "name": "Rik",
         "actual": "-",
         "guesses": {
-          "niels": "9:43"
+          "niels": "9:43",
+          "marcel": "9:45"
         }
       },
       {
         "name": "David",
-        "actual": "-",
+        "actual": "8:55",
         "guesses": {
-          "niels": "9:55"
+          "niels": "9:55",
+          "marcel": "9:05"
         }
       },
       {
         "name": "Bart",
         "actual": "-",
         "guesses": {
-          "niels": "9:10"
+          "niels": "9:10",
+          "marcel": "9:30"
         }
       },
       {
         "name": "Roy",
         "actual": "-",
         "guesses": {
-          "niels": "9:00"
+          "niels": "9:00",
+          "marcel": "9:15"
         }
       }
     ]
